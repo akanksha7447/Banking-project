@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{
+    background: #bdc3c7;
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<ul>
+  <li><p style="color: #74a9fe;text-shadow: slategray 0px 2px;font-size: 30px;">ACGHS BANK</p></li>
+  <li class="signOut" style="float: right; padding-right: 30px"><a href="/home" style="font-size:30px"><i class="fa fa-sign-out"></i></a></li>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+</ul>
+
+<hr style="border-width: 2px;">
+<div class="dashboardWrapper">
+  <header class="main-head">Admin Dashboard<hr style="border-width: 2px;"></header>
+  <br><br>
+  <header class="heading" style="background-color:#6A93CB;">ACGHS Bank Users list</header>
+  <br><br>
+
+</div>
+<br>
+<table border="1" style="margin-left: 600px;">
+  <tr>
+    <th style="background-color: #045DE9">Account ID</th>
+    <th style="background-color: #045DE9">Balance Amount</th>
+    <th style="background-color: #045DE9">Is Approved?</th>
+    <!-- <th style="background-color: #045DE9">Customer Name</th> -->
+  </tr>
+  <tr *ngFor="let account of accounts">
+    <td style="background-color: transparent">
+      {{ account.accountId }}
+    </td>
+    <td style="background-color: transparent">
+      {{ account.balanceAmount }}
+    </td>
+    <td style="background-color: transparent">
+      {{ account.isApproved }}
+    </td>
+    <!-- <td style="background-color: transparent">
+      {{ account.customer.firstName }}
+    </td> -->
+
+  </tr>
+</table>
+</body>
+</html>

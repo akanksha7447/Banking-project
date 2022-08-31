@@ -1,0 +1,52 @@
+<div class="container">
+  <br>
+  <h1 class="animatable" id="title">ACGHS Bank</h1>
+  <div class="animatable" id="message"></div>
+  <div class="animatable" id="sun"></div>
+
+  <div class="form animatable">
+
+    <div class="content signin--content"><br><br>
+      <p id="text">Administrator Login</p>
+      <form action="#" id="signed-in" enctype="multipart/form-data">
+        <div class="spacer"></div>
+        <input type="adminID" name="adminID" id="adminID" class="text-box"  required="required" placeholder="Admin ID">
+        <input type="password" name="password" id="password" class="text-box"  required="required" placeholder="Password">
+        <input type="submit" value="Sign in" class="submit" routerLink="/admindashboard">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- [(ngModel)] = "admin.adminID"
+[(ngModel)] = "admin.password" 
+(ngSubmit)="adminlogin()"-->
+
+<!-- <body>
+  <div class="container">
+    <div class="top">
+      <div class="bottom">
+        <div class="center">
+        <h2>Please Sign In</h2>
+        <div class="main" >
+          <div class="login" >
+            <form style="background-color: transparent;">
+
+            <h1 class ="danger"  > <small class="danger" id="danger"> {{msg}} </small> </h1>
+            <input name = "adminID"  type="text" id = "adminID" placeholder="AdminID" required >
+            <input name="password"  type="password" id = "password" placeholder="password" required>
+            <button><a href="/admindashboard"> Login</a></button>
+            </form>
+          </div>
+          &nbsp;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body> -->
+<!-- [hidden]="logedin" -->
+<!-- [(ngModel)] = "admin.adminID" -->
+<!-- [(ngModel)] = "admin.password" -->
+<!-- action="#"  (ngSubmit)="adminlogin()" -->

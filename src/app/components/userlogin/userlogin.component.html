@@ -1,0 +1,105 @@
+<body [hidden]="logedin">
+	<div class="main" >
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form (ngSubmit)="userRegister()" action="#">
+					<label  for="chk" aria-hidden="true">Sign up</label>
+
+				<input type="text" name = "accountNumber"  type="text" id = "accountNumber"  placeholder="Account Number" required [(ngModel)] = "register.accountNumber" >
+
+
+				<!-- <input type="text" name="password" id="password"  placeholder="Password" required [(ngModel)] = "register.password"> -->
+				<input type="text"
+				placeholder="Password"
+				required
+				#password="ngModel"
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
+				id="password" 
+				name="password"
+				[class.is-valid]="password.invalid && password.touched"
+				[(ngModel)]="register.password"/>
+				<span
+				class="text-danger"
+				[class.d-none]="password.valid || password.untouched"
+				><span *ngIf="password.errors?.['required']">
+				  Password is required
+				</span></span>
+			  <span class="text-danger" *ngIf="password.errors?.['pattern']">
+				Invalid Password</span>
+
+				<input type="password" placeholder="Confirm Password" required>
+
+        <!-- <input type="password" name="transactionPassword" id="transactionPassword"  placeholder="Transaction Password" required  [(ngModel)] = "register.transactionPassword"> -->
+		<input type="text"
+		        placeholder="Transaction Password"
+				required
+				#transactionPassword="ngModel"
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
+				id="transactionPassword" 
+				name="transactionPassword"
+				[class.is-valid]="transactionPassword.invalid && transactionPassword.touched"
+				[(ngModel)]="register.transactionPassword"/>
+				<span
+				class="text-danger"
+				[class.d-none]="transactionPassword.valid || transactionPassword.untouched"
+				><span *ngIf="transactionPassword.errors?.['required']">
+				  Transaction Password is required
+				</span></span>
+			  <span class="text-danger" *ngIf="transactionPassword.errors?.['pattern']">
+				Invalid Transaction Password</span>
+
+        <input type="password" placeholder="Confirm Transaction Password" required>
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login" >
+				<form action="#"  (ngSubmit)="userlogin()">
+
+				<label for="chk" aria-hidden="true">Login</label>
+        <h1 class ="danger"  > <small class="danger" id="danger"> {{msg}} </small> </h1>
+        <input name = "accountNumber"  type="text" id = "accountNumber" placeholder="UserID" required  [(ngModel)] = "user.accountNumber" >
+				<input name="password"  type="password" id = "password" placeholder="password" required  [(ngModel)] = "user.password">
+				<button>Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+
+
+
+<!-- <body [hidden]="logedin">
+	<div class="main" >
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form (ngSubmit)="userRegister()" action="#">
+					<label  for="chk" aria-hidden="true">Sign up</label>
+
+				<input type="text" name = "accountNumber"  type="text" id = "accountNumber"  placeholder="Enter your Account Number" required [(ngModel)] = "register.accountNumber" >
+
+
+				<input type="text" name="password" id="password"  placeholder="Enter your Password" required [(ngModel)] = "register.password">
+
+				<input type="password" placeholder="Enter Confirm Password" required>
+
+        <input type="password" name="transactionPassword" id="transactionPassword"  placeholder="Enter Transaction Password" required  [(ngModel)] = "register.transactionPassword">
+
+        <input type="password" placeholder="Enter Confirm Transaction Password" required>
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login" >
+				<form action="#"  (ngSubmit)="userlogin()">
+
+					<label for="chk" aria-hidden="true">Login</label>
+         <h1 class ="danger"  > <small class="danger" id="danger"> {{msg}} </small> </h1>
+          <input name = "accountNumber"  type="text" id = "accountNumber" placeholder="Enter your UserID" required  [(ngModel)] = "user.accountNumber" >
+					<input name="password"  type="password" id = "password" placeholder="Enter your password" required  [(ngModel)] = "user.password">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+</body> -->

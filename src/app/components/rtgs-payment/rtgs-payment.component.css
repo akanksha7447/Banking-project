@@ -1,0 +1,245 @@
+.wrapper {
+  background-image: linear-gradient(to right bottom, #086afc, #00a4fe, #00c8d7, #a9e1c9, #f6f8f2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  border: 3px solid black;
+  padding: 4px 15px;
+  margin: 10px;
+  width: 25%;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.body {
+  /* flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 70%;
+  padding: 10px;
+}
+
+.ctnBtn {
+  flex: 0.1;
+  border: 1px soild red;
+}
+
+.ctnBtn button {
+  background-color: rgba(176, 174, 174, 0.66);
+  margin-top: 5.5rem;
+  margin-left: 5px;
+}
+
+.form {
+  justify-content: center;
+  flex: 0.9;
+  align-items: center;
+  width: 90%;
+  font-size: 18px;
+  height: 1000px;
+}
+
+form > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+}
+
+form div label {
+  text-align: left;
+  height: 30px;
+  width: 50%;
+  flex: 0.5;
+}
+
+form > div input {
+  background-color: rgba(176, 174, 174, 0.66);
+  text-align: left;
+  width: 40%;
+  height: 30px;
+  border: 1px solid black;
+  flex: 0.4;
+}
+
+form > div select {
+  background-color: rgba(176, 174, 174, 0.66);
+  text-align: left;
+  width: 40%;
+  height: 30px;
+  border: 1px solid black;
+  flex: 0.4;
+}
+
+option {
+  background-color: rgba(176, 174, 174, 0.66);
+  text-align: left;
+  width: 40%;
+  height: 30px;
+  border: 1px solid black;
+}
+
+form > div p {
+  flex: 0.1;
+  text-align: center;
+}
+
+form input {
+  margin-left: 25px;
+}
+#to{
+  margin-left: 1000px;
+}
+
+.buttons button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.buttons button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.buttons button:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.buttons button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+form div .buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+form div .leftbuttons {
+  flex: 0.7;
+}
+
+form div .leftbuttons button {
+  background-color: #e0afa0;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin-left: 15px;
+}
+form div .rightButtons {
+  flex: 0.3;
+  float: right;
+}
+
+form div .rightButtons button {
+  background-color: #e0afa0;
+  font-size: 1.2rem;
+  padding: 5px;
+  float: right;
+}
+
+.valid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.valid .tbody {
+  /* flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  width: 70%;
+  padding: 10px;
+}
+
+.tbody label {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.tbody input {
+  background-color: rgba(176, 174, 174, 0.66);
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.tbody button {
+  margin: 10px;
+  margin-left: 3rem;
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.tbody button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.tbody button:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.tbody button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
