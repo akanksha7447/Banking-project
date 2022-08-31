@@ -1,0 +1,26 @@
+package com.lti.bank.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.lti.bank.model.Customer;
+import com.lti.bank.service.CustomerService;
+
+@RestController
+@CrossOrigin
+public class CustomerController {
+	
+	@Autowired
+	private CustomerService customerService;
+	
+	@PostMapping("/customer")
+	public Customer createCustomer(@Valid @RequestBody Customer cust) {
+		
+		Customer c=customerService.createCustomer(cust);
+		
+		return c;
+	}
+
+}

@@ -1,0 +1,11 @@
+package com.lti.bank.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.lti.bank.model.Account;
+
+@Repository
+public interface AccountRepositroy extends JpaRepository<Account,Long>{
+
+}

@@ -1,0 +1,5 @@
+package com.lti.bank.repo;
+
+public class CustomerRepository {
+
+}

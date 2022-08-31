@@ -1,0 +1,44 @@
+package com.lti.bank.model;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Account")
+public class Account {
+	
+	@Id
+	@SequenceGenerator(name="mysequence", initialValue=5000)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="mysequence")
+	Long accountId;
+	@Column(name="balance_amount")
+	Double balanceAmount;
+	@Column(name="is_Approved")
+	int isApproved;
+	public Double getBalanceAmount() {
+		return balanceAmount;
+	}
+	public void setBalanceAmount(Double balanceAmount) {
+		this.balanceAmount = balanceAmount;
+	}
+	public int getIsApproved() {
+		return isApproved;
+	}
+	public void setIsApproved(int isApproved) {
+		this.isApproved = isApproved;
+	}
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Account(Double balanceAmount, int isApproved) {
+		super();
+		this.balanceAmount = balanceAmount;
+		this.isApproved = isApproved;
+	}
+	
+	
+	
+	
+	
+
+}

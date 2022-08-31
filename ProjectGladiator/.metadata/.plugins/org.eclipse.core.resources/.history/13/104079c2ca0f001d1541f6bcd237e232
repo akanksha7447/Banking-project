@@ -1,0 +1,43 @@
+package com.lti.bank.model;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "User")
+public class User {
+	
+	@Id
+	String userid;
+	Integer accountNumber;
+	String password;
+	String transactionPassword;
+	
+	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public Integer getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(Integer accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getTransactionPassword() {
+		return transactionPassword;
+	}
+	public void setTransactionPassword(String transactionPassword) {
+		this.transactionPassword = transactionPassword;
+	}
+	
+	
+
+}

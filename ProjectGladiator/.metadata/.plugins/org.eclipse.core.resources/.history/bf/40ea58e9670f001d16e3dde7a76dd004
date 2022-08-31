@@ -1,0 +1,26 @@
+package com.lti.bank.controller;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.lti.bank.model.Beneficiary;
+import com.lti.bank.service.BeneficiaryService;
+
+@Controller
+@CrossOrigin
+public class BeneficiaryController {
+	
+	@Autowired
+	private BeneficiaryService beneficiaryService;
+	
+	@PostMapping("/beneficiary")
+	public Beneficiary createBeneficiary(@Valid @RequestBody Beneficiary beneficiary) {
+		
+		return beneficiaryService.createBeneficiary(beneficiary);
+	}
+
+}

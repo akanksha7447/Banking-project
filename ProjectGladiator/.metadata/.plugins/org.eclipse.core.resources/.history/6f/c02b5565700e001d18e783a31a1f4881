@@ -1,0 +1,178 @@
+package com.lti.bank.model;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+@Entity
+@Table(name="customer")
+public class Customer {
+	
+	
+	@Id
+	@SequenceGenerator(name="seq",initialValue = 100)
+	@GeneratedValue(strategy= GenerationType.SEQUENCE,generator = "seq")
+	private int customer_id;
+	private String title;
+	@Column(name="email_id")
+	private String emailId;
+	@Column(name="first_name")
+	private String firstName;
+	@Column(name="middle_name")
+	private String middle_name;
+	@Column(name="last_name")
+	private String lastName;
+	@Column(name="father_name")
+	private String fatherName;
+	@Column(name="aadhar_number")
+	private long aadharNumber;
+	@Column(name="pancard_number")
+	private String pancardNumber;
+	@Column(name="residential_address")
+	private String residentialAddress;
+	@Column(name="permanent_address")
+	private String permanentAddress;
+	@Column(name="mobile_number")
+	private long mobileNumber;
+	@Column(name="occupationType")
+	private String occupation_type;
+	@Column(name="source_of_income")
+	private String sourceOfIncome;
+	@Column(name="gross_annual_income")
+	private int grossAnnualIncome;
+	@Column(name="debit_card")
+	private int debitCard;
+	private int net_banking;
+	
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
+	private Date dob;
+	
+	private char gender;
+	public int getCustomer_id() {
+		return customer_id;
+	}
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getCustomer_email() {
+		return customer_email;
+	}
+	public void setCustomer_email(String customer_email) {
+		this.customer_email = customer_email;
+	}
+	public String getCustomer_firstname() {
+		return customer_firstname;
+	}
+	public void setCustomer_firstname(String customer_firstname) {
+		this.customer_firstname = customer_firstname;
+	}
+	public String getCustomer_middlename() {
+		return customer_middlename;
+	}
+	public void setCustomer_middlename(String customer_middlename) {
+		this.customer_middlename = customer_middlename;
+	}
+	public String getCustomer_lastname() {
+		return customer_lastname;
+	}
+	public void setCustomer_lastname(String customer_lastname) {
+		this.customer_lastname = customer_lastname;
+	}
+	public String getFather_name() {
+		return father_name;
+	}
+	public void setFather_name(String father_name) {
+		this.father_name = father_name;
+	}
+	public long getAadhar_number() {
+		return aadhar_number;
+	}
+	public void setAadhar_number(long aadhar_number) {
+		this.aadhar_number = aadhar_number;
+	}
+	public String getPancard_number() {
+		return pancard_number;
+	}
+	public void setPancard_number(String pancard_number) {
+		this.pancard_number = pancard_number;
+	}
+	public String getCustomer_residential_address() {
+		return customer_residential_address;
+	}
+	public void setCustomer_residential_address(String customer_residential_address) {
+		this.customer_residential_address = customer_residential_address;
+	}
+	public String getCustomer_permanent_address() {
+		return customer_permanent_address;
+	}
+	public void setCustomer_permanent_address(String customer_permanent_address) {
+		this.customer_permanent_address = customer_permanent_address;
+	}
+	public long getMobile_number() {
+		return mobile_number;
+	}
+	public void setMobile_number(long mobile_number) {
+		this.mobile_number = mobile_number;
+	}
+	
+	public String getOccupation_type() {
+		return occupation_type;
+	}
+	public void setOccupation_type(String occupation_type) {
+		this.occupation_type = occupation_type;
+	}
+	public String getSource_of_income() {
+		return source_of_income;
+	}
+	public void setSource_of_income(String source_of_income) {
+		this.source_of_income = source_of_income;
+	}
+	public int getGross_annual_income() {
+		return gross_annual_income;
+	}
+	public void setGross_annual_income(int gross_annual_income) {
+		this.gross_annual_income = gross_annual_income;
+	}
+	
+	public int getDebit_card() {
+		return debit_card;
+	}
+	public void setDebit_card(int debit_card) {
+		this.debit_card = debit_card;
+	}
+	public int getNet_banking() {
+		return net_banking;
+	}
+	public void setNet_banking(int net_banking) {
+		this.net_banking = net_banking;
+	}
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+	public char getGender() {
+		return gender;
+	}
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+}

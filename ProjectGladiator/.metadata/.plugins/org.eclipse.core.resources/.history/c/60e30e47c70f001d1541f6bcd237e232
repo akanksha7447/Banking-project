@@ -1,0 +1,75 @@
+package com.lti.bank.service;
+
+import java.util.*;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lti.bank.model.Customer;
+import com.lti.bank.repo.AccountRepository;
+import com.lti.bank.repo.CustomerRepository;
+
+@Service
+public class CustomerService{
+	
+	@Autowired
+	CustomerRepository customerRepository;
+	
+	@Autowired
+	AccountRepository accountRepository;
+	
+	public String createCustomer(Customer customer) {
+		
+        List<Customer> lu = customerRepository.findAll();
+		
+		Iterator<Customer> it = lu.iterator();
+		int flag=0;
+		while(it.hasNext()) {
+			Customer c=it.next();
+			if(c.getEmailId().equals(customer.getEmailId())) {
+				flag=1;
+				break;
+			}
+				else if(c.getMobileNumber()==customer.getMobileNumber()) {
+					flag=2;
+				}
+				else if(c.getAadharNumber()==customer.getAadharNumber()) {
+					flag=3;
+				}
+				else if(c.getPancardNumber()==customer.getPancardNumber()) {
+					flag=4;
+				}
+			}
+		
+		switch(flag){
+			case 1:
+				return "{\"status\":\"Email already Exists\"}";
+			case 2:
+				return "{\"status\":\"Mobile Number already Exists\"}";
+			case 3:
+				return "{\"status\":\"Aadhar Number already Exists\"}";
+			case 4:
+				return "{\"status\":\"Pan Card Number already Exists\"}";
+			default:
+				Customer c=customerRepository.save(customer);
+				return "{\"status\":\"Saved Sucessfully\"}";
+		}
+	}
+	
+	public List<Customer> getAllCustomer(){
+		
+		List<Customer> ls=customerRepository.findAll();
+		
+		return ls;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+
+}

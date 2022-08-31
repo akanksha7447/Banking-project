@@ -1,0 +1,19 @@
+package com.lti.bank.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.lti.bank.model.User;
+import com.lti.bank.repo.UserRepository;
+
+public class UserService {
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	
+	public User addUser(User user) {
+		System.out.println("Inside Service Layer");
+	      return userRepo.save(user);
+	}
+
+}

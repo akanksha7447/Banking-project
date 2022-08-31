@@ -1,0 +1,17 @@
+package com.lti.bank.repo;
+
+import java.sql.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.lti.bank.model.Transactions;
+
+@Repository
+public interface TransactionRepository extends JpaRepository<Transactions,Long>{
+	
+//	@Query()
+//	public List<Transactions> getTransactionByDate(Date startDate,Date endDate);  
+
+}

@@ -1,0 +1,60 @@
+package com.lti.bank.service;
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.lti.bank.model.User;
+import com.lti.bank.repo.UserRepository;
+
+public class UserService {
+	
+	@Autowired
+	private UserRepository userRepo;
+	
+	
+	public ResponseEntity<?> addUser(User user) {
+		System.out.println("Inside Service Layer");
+		
+		Map<String, Object> map=new LinkedHashMap<>();
+		
+        List<User> lu = userRepo.findAll();
+		
+		if(lu == null ) {
+			User u = userRepo.save(user);
+			
+			map.put("success", true );
+			map.put("body", u);
+			return new ResponseEntity<>(map,HttpStatus.OK);
+		}else {
+		
+			Iterator<User> it = lu.iterator();
+			
+			while(it.hasNext()) {
+				if(it.next().getAccountNumber().equals(user.getAccountNumber())) {
+					map.clear();
+					map.put("success", false );
+					map.put("message", "User already exists");
+					
+					return new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
+				}
+			}
+		}
+	
+		
+		
+		
+		
+		
+		
+		
+		
+	      return userRepo.save(user);
+	}
+
+}

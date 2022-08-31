@@ -1,0 +1,21 @@
+package com.lti.bank.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.lti.bank.model.Account;
+import com.lti.bank.service.AccountService;
+
+public class AccountController {
+	
+	@Autowired
+	private AccountService accountService;
+	
+	
+	@PostMapping("/account")
+	public Account createAccount(Account acct) {
+		Account a=accountService.createAccount(acct);
+		
+		return a;
+	}
+
+}

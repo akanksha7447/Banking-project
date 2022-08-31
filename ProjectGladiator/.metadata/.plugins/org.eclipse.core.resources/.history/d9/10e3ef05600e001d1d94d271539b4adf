@@ -1,0 +1,21 @@
+package com.lti.bank.model;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Account")
+public class Account {
+	
+	@Id
+	@SequenceGenerator(name="mysequence", initialValue=1000)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="mysequence")
+	int accountId;
+	@Column(name="balance_amount")
+	Double balanceAmount;
+	@Column(name="is_Approved")
+	int isApproved;
+	
+	
+	
+
+}

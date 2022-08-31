@@ -1,0 +1,70 @@
+package com.lti.bank.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.lti.bank.exception.RecordNotFoundException;
+import com.lti.bank.model.TransactionFilter;
+import com.lti.bank.model.Transactions;
+import com.lti.bank.repo.TransactionRepository;
+
+@Service
+public class TransactionService {
+	
+	@Autowired
+	TransactionRepository transactionRepository;
+	
+	public List<Transactions> getAllTransactions(){
+		List<Transactions> transList=transactionRepository.findAll();
+		
+		return transList;
+	}
+	
+	
+	public Transactions createTransaction(Transactions trans) {
+		
+		return transactionRepository.save(trans);
+	}
+	
+	
+	public Transactions getTransactionsById(Long id) throws RecordNotFoundException {
+		
+		Optional<Transactions> tran=transactionRepository.findById(id);
+		
+		if(tran.isPresent()) {
+			return tran.get();
+		}
+		else {
+			throw new RecordNotFoundException("No transaction record found for given id: "+id);
+		}
+	}
+	
+	public ResponseEntity<?> filterTransactions(TransactionFilter transactionFilter){
+		
+		Map<String,Object> m=new HashMap<String,Object>();
+		
+		try {
+			List<Transactions> ft= transactionRepository.getTransactionByDate(transactionFilter.getStartDate(), transactionFilter.getEndDate());
+			m.put("status",1);
+			m.put("data", ft);	
+			return new ResponseEntity<>(m,HttpStatus.OK);
+		}catch(Exception e) {
+			m.clear();
+			m.put("Status", 0);
+			m.put("Message", "No Transactions found between dates");
+			return new ResponseEntity<>(m,HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	
+
+	
+}

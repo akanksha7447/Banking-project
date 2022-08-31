@@ -1,0 +1,22 @@
+package com.lti.bank.model;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="UserLogin")
+public class Login {
+	
+	@Id
+	Long accountNumber;
+	String password;
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+
+}

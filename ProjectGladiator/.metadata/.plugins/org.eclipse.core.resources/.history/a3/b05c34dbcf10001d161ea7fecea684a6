@@ -1,0 +1,47 @@
+package com.lti.bank.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.lti.bank.model.Account;
+import com.lti.bank.service.AccountService;
+
+@RestController
+@CrossOrigin
+public class AccountController {
+	
+	@Autowired
+	private AccountService accountService;
+	
+	
+	@PostMapping("/account")
+	public ResponseEntity<?> createAccount(@Valid @RequestBody Account acct) {
+		
+		return accountService.createAccount(acct);
+	}
+	
+	@GetMapping("/account")
+	public List<Account> getAllAccount(){
+		
+		List<Account> al=accountService.getAllAccount();
+		
+		return al;
+	}
+	
+	@GetMapping("/account/{id}")
+	public ResponseEntity<?> getAccountByAccountId(@PathVariable("id") Long id){
+		
+		return accountService.getAccountByAccountId(id);
+	}
+
+}

@@ -1,0 +1,131 @@
+package com.lti.bank.service;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.lti.bank.exception.RecordNotFoundException;
+import com.lti.bank.model.TransactionFilter;
+import com.lti.bank.model.Transactions;
+import com.lti.bank.repo.AccountRepository;
+import com.lti.bank.repo.TransactionRepository;
+
+@Service
+public class TransactionService {
+	
+	@Autowired
+	TransactionRepository transactionRepository;
+	
+	@Autowired
+	AccountRepository accountRepositroy;
+	
+	public List<Transactions> getAllTransactions(){
+		List<Transactions> transList=transactionRepository.findAll();
+		
+		return transList;
+	}
+	
+	
+	public ResponseEntity<?> createTransaction(Transactions trans) {
+		
+		
+		
+		Map<String, Object> map=new HashMap<>();
+		
+		Double accountbalance=accountRepositroy.getBalanceByAccountId(trans.getAccount().getAccountId());
+		System.out.println(accountbalance);
+		
+		if(trans.getTransactionMode().equalsIgnoreCase("deposit")) {
+			System.out.println("Deposited");
+			
+			accountbalance=accountbalance+trans.getAmount();
+		    
+			int n=accountRepositroy.updateAccountBalanceByAccountId(accountbalance,trans.getAccount().getAccountId());
+			
+			System.out.println(n);
+			
+			Transactions t=transactionRepository.save(trans);
+			
+			map.put("Success", true);
+			map.put("message", t);
+			
+			
+			return new ResponseEntity<>(map,HttpStatus.OK);
+			
+		}
+		else{
+			System.out.println("Withdrawl");
+			
+			if(accountbalance<trans.getAmount()) {
+				map.clear();
+				map.put("Success", false);
+				map.put("message", "Insufficient Funds");
+				
+				return new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
+			}
+			else{
+			
+			accountbalance=accountbalance-trans.getAmount();
+			
+			int n=accountRepositroy.updateAccountBalanceByAccountId(accountbalance,trans.getAccount().getAccountId());
+			
+			System.out.println(n);
+			
+			Transactions t=transactionRepository.save(trans);
+			
+			map.clear();
+			map.put("Success", true);
+			map.put("Message", t);
+			
+			return new ResponseEntity<>(map,HttpStatus.BAD_REQUEST);
+			}
+			
+		}
+		
+		
+		
+	}
+	
+	
+	public Transactions getTransactionsById(Long id) throws RecordNotFoundException {
+		
+		Optional<Transactions> tran=transactionRepository.findById(id);
+		
+		if(tran.isPresent()) {
+			return tran.get();
+		}
+		else {
+			throw new RecordNotFoundException("No transaction record found for given id: "+id);
+		}
+	}
+	
+	public ResponseEntity<?> filterTransactions(TransactionFilter transactionFilter){
+		
+		Map<String,Object> m=new LinkedHashMap<String,Object>();
+		
+		
+			List<Transactions> ft= transactionRepository.getTransactionByDate(transactionFilter.getStartDate(), transactionFilter.getEndDate());
+			
+			if(ft.isEmpty()) {
+				m.put("Status", 0);
+				m.put("Message", "No Transactions found between dates");
+				return new ResponseEntity<>(m,HttpStatus.NOT_FOUND);
+			}
+			m.put("status",1);
+			m.put("data", ft);	
+			return new ResponseEntity<>(m,HttpStatus.OK);
+		
+		
+	}
+	
+	
+
+	
+}

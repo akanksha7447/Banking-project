@@ -1,0 +1,46 @@
+package com.lti.bank.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lti.bank.model.Transactions;
+import com.lti.bank.repo.TransactionRepository;
+
+@Service
+public class TransactionService {
+	
+	@Autowired
+	TransactionRepository transactionRepository;
+	
+	public List<Transactions> getAllTransactions(){
+		List<Transactions> transList=transactionRepository.findAll();
+		
+		return transList;
+	}
+	
+	
+	public Transactions createTransaction(Transactions trans) {
+		
+		return transactionRepository.save(trans);
+	}
+	
+	
+	public Transactions getTransactionsById(Long id) {
+		
+		Optional<Transactions> tran=transactionRepository.findById(id);
+		
+		if(tran.isPresent()) {
+			return tran.get();
+		}
+		else {
+			System.out.println("Record Not Found");
+		}
+	}
+	
+	
+
+	
+}

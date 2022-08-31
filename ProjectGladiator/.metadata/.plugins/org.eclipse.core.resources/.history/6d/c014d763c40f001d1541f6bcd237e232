@@ -1,0 +1,30 @@
+package com.lti.bank.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lti.bank.model.Customer;
+import com.lti.bank.repo.AccountRepository;
+import com.lti.bank.repo.CustomerRepository;
+
+@Service
+public class CustomerService{
+	
+	@Autowired
+	CustomerRepository customerRepository;
+	
+	@Autowired
+	AccountRepository accountRepository;
+	
+	public Customer createCustomer(Customer customer) {
+		
+		
+		return customerRepository.save(customer);
+	}
+	
+	
+	
+	
+	
+
+}

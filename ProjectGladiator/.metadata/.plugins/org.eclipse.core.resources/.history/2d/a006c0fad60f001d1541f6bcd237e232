@@ -1,0 +1,22 @@
+package com.lti.bank.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.lti.bank.model.Admin;
+import com.lti.bank.service.AdminService;
+
+@RestController
+@CrossOrigin
+public class AdminController {
+	
+	@Autowired
+	private AdminService adminService;
+	
+	@PostMapping("/admin")
+	public ResponseEntity<?> addAdmin(Admin admin) {
+		return adminService.addAdmin(admin);
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.lti.bank.service;
+
+import com.lti.bank.model.Account;
+import com.lti.bank.repo.AccountRepository;
+
+public class AccountService {
+	
+	@Autowired
+	private AccountRepository  accountRepository;
+	
+	public Account createAccount(Account acct) {
+		return accountRepository.save(acct);
+	} 
+
+}

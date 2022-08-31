@@ -1,0 +1,74 @@
+package com.lti.bank.model;
+
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="account")
+public class Account {
+	
+	@Id
+	@SequenceGenerator(name="mysequence", initialValue=1000)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="mysequence")
+	Long accountId;
+	@Column(name="balance_amount")
+	Double balanceAmount;
+	@Column(name="is_Approved")
+	int isApproved;
+	
+	@ManyToOne
+	Customer customer;
+	
+	@OneToMany(mappedBy="account" ,cascade= {CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
+	private List<Beneficiary> beneficiaryList; 
+	
+	
+	
+	
+	public List<Beneficiary> getBeneficiaryList() {
+		return beneficiaryList;
+	}
+	public void setBeneficiaryList(List<Beneficiary> beneficiaryList) {
+		this.beneficiaryList = beneficiaryList;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public Double getBalanceAmount(){
+		return balanceAmount;
+	}
+	public void setBalanceAmount(Double balanceAmount) {
+		this.balanceAmount = balanceAmount;
+	}
+	public int getIsApproved() {
+		return isApproved;
+	}
+	public void setIsApproved(int isApproved) {
+		this.isApproved = isApproved;
+	}
+	public Account() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Account(Double balanceAmount, int isApproved) {
+		super();
+		this.balanceAmount = balanceAmount;
+		this.isApproved = isApproved;
+	}
+	public Long getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+	
+	
+	
+	
+	
+
+}

@@ -1,0 +1,21 @@
+package com.lti.bank.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.lti.bank.model.Account;
+
+@Repository
+public interface AccountRepository extends JpaRepository<Account,Long> {
+	
+	@Query("select a.balanceAmount from Account a where a.accountId =:accountId")
+	public double getBalanceByAccountId(@Param("accountId") Long accountId);
+	
+	@Query("update Account a set a.balanceAmount=:balance where a.accountId=:accountId ")
+	public String updateAccountBalanceByAccountId(@Param("balance") Double balance, @Param("accountId") Long accountId );
+	
+	
+
+}

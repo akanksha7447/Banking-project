@@ -1,0 +1,5 @@
+package com.lti.bank.model;
+
+public class AdminLogin {
+
+}

@@ -1,0 +1,47 @@
+package com.lti.bank.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.lti.bank.model.Transactions;
+import com.lti.bank.repo.TransactionRepository;
+import com.lti.bank.service.TransactionService;
+
+@RestController
+@CrossOrigin
+public class TransactionController{
+	
+	
+	@Autowired
+	private TransactionService transactionService;
+	
+	
+	@PostMapping("/transaction")
+	public Transactions addTransaction(@Valid @RequestBody Transactions trans) {
+		
+       Transactions t=transactionService.createTransaction(trans);
+		
+		return t;	
+		
+//		return transactionRepository.save(trans);			
+	}
+	
+	@GetMapping("/transaction")
+	public List<Transactions> getAllTransactions(){
+		
+		List<Transactions> lt=transactionService.getAllTransactions();
+		
+		return lt;
+	}
+	
+	
+	
+	
+	
+
+}

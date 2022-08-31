@@ -1,0 +1,20 @@
+package com.lti.bank.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.lti.bank.model.User;
+import com.lti.bank.service.UserService;
+
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	
+	public ResponseEntity<?> addUser(User user){
+		return userService.addUser(user);
+	}
+	
+
+}
